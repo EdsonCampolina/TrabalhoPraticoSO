@@ -5,24 +5,11 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    char arg[100];
-    int check = 1, i = 0;
-    char fim[] = "FIM";
 
     printf("Starting DB \n");
 
-    do
-    {
-        scanf(" %[^\n]", arg);
-        check = strcmp(arg, fim);
-        if (check != 0)
-        {
-            printf(".. \n");
-            translateCommand(arg);
-        }
-    } while (check != 0);
-    
-    
+    translateCommand(argv[1]);
+
 }

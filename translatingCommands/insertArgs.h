@@ -6,12 +6,12 @@
 #include <fstream>
 #include "../structs/record.h"
 
-
 record translateInsertArgs(char entrada[100])
 {
     char inputs[2][100], value[100];
     int sizeInputs[2];
-    int i, j = 0, k = 10, sortKey;
+    sizeInputs[1] = 0;
+    int i, j = 0, k = 9, sortKey;
     bool argRecognized = false;
     record r;
 
@@ -21,28 +21,24 @@ record translateInsertArgs(char entrada[100])
         {
         case ',':
             j++;
+            sizeInputs[0] = i - k;
             k = i + 1;
-            sizeInputs[0] = i - 10;
-            break;
-        case '>':
-            sizeInputs[1] = i - sizeInputs[0] - 10;
-            argRecognized = true;
             break;
         default:
             inputs[j][i - k] = entrada[i];
+            if (j == 1)
+            {
+                sizeInputs[1]++;
+                if (!argRecognized)
+                    argRecognized = true;
+            }
         }
-        if (argRecognized)
-            break;
     }
 
     if (argRecognized)
     {
-
         sortKey = atoi(inputs[0]);
         strncpy(value, inputs[1], sizeInputs[1]);
-
-        // printf("sort-key: %d \n", sortKey);
-        // printf("value: %s \n", value);
         r = setRecord(sortKey, value, true);
     }
     else

@@ -8,18 +8,18 @@
 
 void translateCommand(char entrada[100])
 {
-    char insert[] = "--insert=<";
-    char search[] = "--search=<";
-    char remove[] = "--remove=<";
-    char update[] = "--update=<";
-    char list[] = "--list=<";
+    char insert[] = "--insert=";
+    char search[] = "--search=";
+    char remove[] = "--remove=";
+    char update[] = "--update=";
+    char list[] = "--list=";
     bool argRecongnized = false;
     char c[100];
     int i;
     record r;
 
     memset(c, 0, sizeof c);
-    strncpy(c, entrada, 10);
+    strncpy(c, entrada, 9);
 
     if (strcmp(c, insert) == 0)
     {
@@ -52,7 +52,7 @@ void translateCommand(char entrada[100])
     }
 
     memset(c, 0, sizeof c);
-    strncpy(c, entrada, 8);
+    strncpy(c, entrada, 7);
 
     if (strcmp(c, list) == 0)
     {
