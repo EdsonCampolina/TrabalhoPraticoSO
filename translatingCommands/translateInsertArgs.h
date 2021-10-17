@@ -1,22 +1,27 @@
-#ifndef INSERTARGS_H
-#define INSERTARGS_H
+#ifndef TRANSLATEINSERTARGS_H
+#define TRANSLATEINSERTARGS_H
 
 #include <stdio.h>
 #include <string.h>
 #include <fstream>
 #include "../structs/record.h"
+#include "../utils/utils.h"
 
-record translateInsertArgs(char entrada[100])
+record translateInsertArgs(char entrada[SIZECHARINPUT])
 {
-    char inputs[2][100], value[100];
+    char inputs[2][SIZECHARINPUT], value[SIZECHARINPUT];
     int sizeInputs[2];
     sizeInputs[1] = 0;
-    int i, j = 0, k = 9, sortKey;
+    int i, j = 0, k = commandsSize[0], sortKey;
     bool argRecognized = false;
     record r;
 
-    for (i = k; i < 100; i++)
+    memset(inputs[0], 0, sizeof inputs[0]);
+    memset(inputs[1], 0, sizeof inputs[1]);
+
+    for (i = k; i < SIZECHARINPUT; i++)
     {
+
         switch (entrada[i])
         {
         case ',':

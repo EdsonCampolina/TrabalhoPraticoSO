@@ -1,5 +1,5 @@
-#ifndef WRITETOFILE_H
-#define WRITETOFILE_H
+#ifndef WRITETODATAFILE_H
+#define WRITETODATAFILE_H
 
 #include <iostream>
 #include "../structs/record.h"
@@ -12,23 +12,22 @@ using std::cerr;
 using std::endl;
 using std::ofstream;
 
-void writeToFile(record r)
+void writeToDataFile(int numberOfRecords)
 {
     ofstream outdata;
-    outdata.open("./bd.txt", ios::app);
+    outdata.open("./cruddbmsData/data.txt");
     if (!outdata)
     {
         cerr << "Error: file could not be opened" << endl;
         exit(1);
     }
 
-    outdata << r.sortKey << "," << r.value << "\n";
+    outdata << numberOfRecords;
     outdata.close();
-    printf("Key inserted: %d \n", r.sortKey);
 
-    char message[] = "Insertion: ";
+    char message[] = "Updating record number: ";
 
-    writeToLog(message, r);
+    writeToLogNumberOfRecords(message, numberOfRecords);
 
 }
 

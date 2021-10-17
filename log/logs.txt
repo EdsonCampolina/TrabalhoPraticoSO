@@ -1,0 +1,33 @@
+Updating record number: 8
+Updating record number: 9
+Insertion: 1918985587,ch
+Updating record number: 10
+Insertion: 1918985587,ch
+Updating record number: 11
+Search for key: 7
+Search for key: 7
+Search for key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 7
+Removing key: 8
+Removing key: 5
+Updating key: 376647443
+Updating key: 6
+Updating key: 6
+Updating key: 6
+Updating key: 6
+Updating key: 11
+Updating key: 11
+Updating key: 11
+Updating key: 11
+Updating key: 10
+Updating key: 10
+Updating key: 10
+Updating record number: 12
+Updating record number: 13

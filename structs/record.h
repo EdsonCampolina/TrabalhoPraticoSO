@@ -2,15 +2,17 @@
 #define RECORD_H
 
 #include <string>
+#include "../utils/utils.h"
 
 struct record
 {
     int sortKey;
-    char value[100];
+    char value[SIZECHARINPUT];
+    int key;
     bool dataOk;
 };
 
-record setRecord(int inputKey, char inputValue[100], bool inputStatus)
+record setRecord(int inputKey, char inputValue[SIZECHARINPUT], bool inputStatus)
 {
     record r;
     r.sortKey = inputKey;
