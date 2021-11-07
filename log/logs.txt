@@ -31,3 +31,9 @@ Updating key: 10
 Updating key: 10
 Updating record number: 12
 Updating record number: 13
+Search for key: 6
+Updating record number: 14
+Updating record number: 15
+Removing key: 14
+Updating key: 13
+Updating record number: 16
