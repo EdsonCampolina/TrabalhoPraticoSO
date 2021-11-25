@@ -13,11 +13,11 @@ const int SIZECHARMESSAGELOG = 100;
 
 // Commands definitions
 
-const int NOCOMMANDS = 6;
-char commandsStr[NOCOMMANDS][10] = {"--insert=", "--search=", "--remove=", "--update=", "--list=", "undefined"};
-char commandsTypes[NOCOMMANDS][10] = {"insert", "search", "remove", "update", "list", "undefined"};
-int commandsSize[NOCOMMANDS] = {9, 9, 9, 9, 7, 1};
-char commandsRes[NOCOMMANDS][20] = {"Inserting data.", "Searching data.", "Removing data.", "Updating data.", "Listing data.", "Unknown command"};
+const int NOCOMMANDS = 7;
+char commandsStr[NOCOMMANDS][20] = {"--insert=", "--search=", "--remove=", "--update=", "--list=", "undefined", "--reverse-list="};
+char commandsTypes[NOCOMMANDS][20] = {"insert", "search", "remove", "update", "list", "undefined", "reverse-list"};
+int commandsSize[NOCOMMANDS] = {9, 9, 9, 9, 7, 1, 15};
+char commandsRes[NOCOMMANDS][25] = {"Inserting data.", "Searching data.", "Removing data.", "Updating data.", "Listing data.", "Unknown command", "Reverse listing data"};
 
 
 // Putting all args in a char

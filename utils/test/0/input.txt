@@ -1,0 +1,8 @@
+./simpledb --insert=1,foobar        
+./simpledb --insert=2,foobar        
+./simpledb --insert=10,foobar     
+./simpledb --insert=4,foobar        
+./simpledb --insert=5,foobar        
+./simpledb --insert=6,foobar        
+./simpledb --insert=7,foobar        
+./simpledb --insert=8,foobar  
