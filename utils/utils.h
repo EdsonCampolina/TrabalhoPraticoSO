@@ -9,6 +9,7 @@
 
 const int SIZECHARINPUT = 100;
 const int SIZECHARMESSAGELOG = 100;
+const int LISTSIZE = 100;
 
 
 // Commands definitions

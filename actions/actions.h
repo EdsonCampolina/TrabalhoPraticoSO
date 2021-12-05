@@ -9,7 +9,7 @@
 #include "./writeToFile.h"
 #include "./removeFromFile.h"
 #include "./updateFile.h"
-
+#include "./listFromFile.h"
 
 #include "../structs/internalCommand.h"
 #include "../cruddbmsData/read.h"
@@ -57,6 +57,12 @@ void executeCommand(internalCommand com)
     }
 
     // list
+    if (!strcmp(com.commandName, commandsTypes[4]))
+    {
+        printf("%s \n", commandsRes[4]);
+        if (com.commandRecord.dataOk)
+            listFromFile(com.commandRecord.key, com.commandOperator);
+    }
 
     // unknown command
     if (!strcmp(com.commandName, commandsTypes[5]))

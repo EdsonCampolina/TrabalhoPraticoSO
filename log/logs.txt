@@ -1,39 +1,53 @@
+Updating record number: 1
+Updating record number: 2
+Updating record number: 3
+Updating record number: 4
+Updating record number: 5
+Updating record number: 6
+Updating record number: 7
 Updating record number: 8
 Updating record number: 9
-Insertion: 1918985587,ch
-Updating record number: 10
-Insertion: 1918985587,ch
-Updating record number: 11
-Search for key: 7
-Search for key: 7
-Search for key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 7
-Removing key: 8
-Removing key: 5
-Updating key: 376647443
-Updating key: 6
-Updating key: 6
-Updating key: 6
-Updating key: 6
-Updating key: 11
-Updating key: 11
-Updating key: 11
-Updating key: 11
-Updating key: 10
-Updating key: 10
-Updating key: 10
-Updating record number: 12
-Updating record number: 13
-Search for key: 6
-Updating record number: 14
-Updating record number: 15
-Removing key: 14
-Updating key: 13
-Updating record number: 16
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 3
+Listing key: 5
+Listing key: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 3
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: 1
+Listing keys: >=11
+Listing keys: >=1010
+Listing keys: >=1010
+Listing keys: >=10
+Listing keys: >=5

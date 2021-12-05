@@ -10,6 +10,7 @@ struct record
     char value[SIZECHARINPUT];
     int key;
     bool dataOk;
+    char listType[10];
 };
 
 record setRecord(int inputKey, char inputValue[SIZECHARINPUT], bool inputStatus)

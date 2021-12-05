@@ -11,14 +11,14 @@ Nesse trabalho desenvolveremos um banco de dados de chave-valor
 - [x] Criar arquivo output.txt com a saída esperada pelos comandos contidos no input.txt (para checkar com o arquivo output2.txt com a saída da versão atual do programa);
 - [ ] Escrita do Makefile;
 - [ ] Implementar tabela HASH (A tabela que será armazenada no arquivo) [Deixar por último];
-- [ ] Implementar comando list
+- [x] Implementar comando list
 
 
 ## Execução
 
 Para compilar e rodar o código em um ambiente Linux:
 
-```make simpledb```
+```rm simpledb && make simpledb```
 
 # Exemplos de comandos
 
@@ -30,7 +30,7 @@ Para compilar e rodar o código em um ambiente Linux:
 
 ```./simpledb --search=6```
 
-```./simpledb --list=key>3```
+```./simpledb --list="key>3"```
 
 # Teste
 
