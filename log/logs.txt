@@ -51,3 +51,11 @@ Listing keys: >=1010
 Listing keys: >=1010
 Listing keys: >=10
 Listing keys: >=5
+Listing keys: >=4
+Listing keys: <4
+Listing keys: <=4
+Listing keys: <=4
+Listing keys: <=4
+Listing keys: <=3
+Listing keys: <3
+Listing keys: <3

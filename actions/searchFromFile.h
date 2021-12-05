@@ -6,6 +6,7 @@
 #include "../log/writeToLog.h"
 #include <fstream>
 #include <string>
+#include "../utils/utils.h"
 
 using namespace std;
 using std::cerr;
@@ -25,7 +26,7 @@ void searchFomFile(int key)
     std::string line;
     while (std::getline(indata, line))
     {
-        if (key == stoi(line.c_str()))
+        if (HASH_FN(key) == stoi(line.c_str()))
         {
             printf("%s \n", line.c_str());
             found = true;

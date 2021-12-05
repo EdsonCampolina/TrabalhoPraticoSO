@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include <bits/stdc++.h>
+#include "../utils/utils.h"
 
 bool compareStrs(string s1, string s2)
 {
@@ -23,6 +24,7 @@ string removingKey(string s)
 void listFromFile(int key, char operatorIn[2])
 {
 
+    unsigned hash = HASH_FN(key);
     std::string line;
     std::ifstream indata;
 
@@ -36,22 +38,22 @@ void listFromFile(int key, char operatorIn[2])
 
     while (getline(indata, line))
     {
-        if (!strcmp(operatorIn, operators[0]) && stoi(line.c_str()) > key)
+        if (!strcmp(operatorIn, operators[0]) && stoi(line.c_str()) > hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[1]) && stoi(line.c_str()) < key)
+        if (!strcmp(operatorIn, operators[1]) && stoi(line.c_str()) < hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[2]) && stoi(line.c_str()) >= key)
+        if (!strcmp(operatorIn, operators[2]) && stoi(line.c_str()) >= hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[3]) && stoi(line.c_str()) <= key)
+        if (!strcmp(operatorIn, operators[3]) && stoi(line.c_str()) <= hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
@@ -77,7 +79,7 @@ void listFromFile(int key, char operatorIn[2])
     messageStr.append(operatorIn);
     char message[100];
     strcpy(message, messageStr.c_str());
-    writeToLogNumberOfRecords(message, key);
+    writeToLogNumberOfRecords(message, hash);
 }
 
 #endif

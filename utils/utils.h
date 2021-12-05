@@ -10,7 +10,15 @@
 const int SIZECHARINPUT = 100;
 const int SIZECHARMESSAGELOG = 100;
 const int LISTSIZE = 100;
+const int __HASHTABLE_LENGTH = 1024;
 
+/**
+ *@brief Simple Hash Function
+ */
+int HASH_FN(int x)
+{
+    return (x) % __HASHTABLE_LENGTH;
+}
 
 // Commands definitions
 

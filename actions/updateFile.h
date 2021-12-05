@@ -6,6 +6,7 @@
 #include "../log/writeToLog.h"
 #include <fstream>
 #include <string>
+#include "../utils/utils.h"
 
 void updateFile(record r)
 {
@@ -23,13 +24,13 @@ void updateFile(record r)
 
     while (getline(indata, line))
     {
-        if (r.key != stoi(line.c_str()))
+        if (HASH_FN(r.key) != stoi(line.c_str()))
         {
             temp << line << std::endl;
         }
         else
         {
-            temp << r.key << "," << r.sortKey << "," << r.value << "\n";
+            temp << HASH_FN(r.key) << "," << r.sortKey << "," << r.value << "\n";
             found = true;
         }
     }

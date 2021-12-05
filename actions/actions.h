@@ -24,7 +24,7 @@ void executeCommand(internalCommand com)
     {
         if (com.commandRecord.dataOk)
         {
-            int numberOfRecords = readFromDataFile();
+            unsigned numberOfRecords = readFromDataFile();
             numberOfRecords++;
             com.commandRecord.key = numberOfRecords;
             writeToFile(com.commandRecord);
