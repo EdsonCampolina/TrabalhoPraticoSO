@@ -13,8 +13,9 @@ using std::cerr;
 using std::endl;
 using std::ofstream;
 
-void writeToFile(record r)
+static void *writeToFile(void *arguments)
 {
+    struct arg_struct *args = (struct arg_struct *)arguments;
     std::string line;
     std::ifstream indata;
 
@@ -28,26 +29,26 @@ void writeToFile(record r)
 
     while (getline(indata, line))
     {
-        if (HASH_FN(r.key) != stoi(line.c_str()))
+        if (HASH_FN(args->com.commandRecord.key) != stoi(line.c_str()))
         {
             temp << line << std::endl;
         }
         else
         {
-            temp << HASH_FN(r.key) << "," << r.sortKey << "," << r.value << "\n";
+            temp << HASH_FN(args->com.commandRecord.key) << "," << args->com.commandRecord.sortKey << "," << args->com.commandRecord.value << "\n";
             found = true;
         }
     }
 
     if (!found)
     {
-        temp << HASH_FN(r.key) << "," << r.sortKey << "," << r.value << "\n";
+        temp << HASH_FN(args->com.commandRecord.key) << "," << args->com.commandRecord.sortKey << "," << args->com.commandRecord.value << "\n";
     }
     const char *p = pathToBD.c_str();
     remove(p);
     rename(pathToTemp.c_str(), pathToBD.c_str());
     temp.close();
-    printf("Key inserted: %d \n", r.key);
+    printf("Key inserted: %d \n", args->com.commandRecord.key);
 }
 
 #endif

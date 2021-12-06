@@ -11,8 +11,15 @@ using std::cerr;
 using std::endl;
 using std::ofstream;
 
-void writeToLogRecord(char message[SIZECHARMESSAGELOG], record r)
+struct arg_struct
 {
+    string message;
+    internalCommand com;
+};
+
+static void *writeToLog(void *arguments)
+{
+    struct arg_struct *args = (struct arg_struct *)arguments;
     ofstream outdata;
     outdata.open("./log/logs.txt", ios::app);
     if (!outdata)
@@ -21,22 +28,10 @@ void writeToLogRecord(char message[SIZECHARMESSAGELOG], record r)
         exit(1);
     }
 
-    outdata << message << r.sortKey << "," << r.value << "\n";
+    outdata << args->message << args->com.commandRecord.key << "\n";
     outdata.close();
-}
 
-void writeToLogNumberOfRecords(char message[SIZECHARMESSAGELOG], int numberOfRecords)
-{
-    ofstream outdata;
-    outdata.open("./log/logs.txt", ios::app);
-    if (!outdata)
-    {
-        cerr << "Error: file could not be opened" << endl;
-        exit(1);
-    }
-
-    outdata << message << numberOfRecords << "\n";
-    outdata.close();
+    return NULL;
 }
 
 #endif

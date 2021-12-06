@@ -13,9 +13,9 @@ using std::cerr;
 using std::endl;
 using std::ifstream;
 
-void removeFromFile(int key)
+static void *removeFromFile(void *arguments)
 {
-
+    struct arg_struct *args = (struct arg_struct *)arguments;
     std::string line;
     std::ifstream indata;
 
@@ -29,7 +29,7 @@ void removeFromFile(int key)
 
     while (getline(indata, line))
     {
-        if (HASH_FN(key) != stoi(line.c_str()))
+        if (HASH_FN(args->com.commandRecord.key) != stoi(line.c_str()))
         {
             temp << line << std::endl;
         }
@@ -46,13 +46,12 @@ void removeFromFile(int key)
     remove(p);
     rename(pathToTemp.c_str(), pathToBD.c_str());
 
-    char message[] = "Removing key: ";
-    writeToLogNumberOfRecords(message, key);
-
     if (!found)
-        printf("The key %d was not found \n", key);
+        printf("The key %d was not found \n", args->com.commandRecord.key);
     else
-        printf("The key %d was removed \n", key);
+        printf("The key %d was removed \n", args->com.commandRecord.key);
+
+    return NULL;
 }
 
 #endif

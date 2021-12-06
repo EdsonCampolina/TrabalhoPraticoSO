@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string.h>
+#include <semaphore.h>
+#include <assert.h>
+#include <pthread.h>
 
 
 // Char sizes
@@ -45,5 +48,64 @@ char *concatAllArgs(int argc, char *argv[])
     return str;
 }
 
+/**
+ * @brief Semaphore for Hashtable
+ */
+static sem_t semaphore;
+
+void SEMAPHORE_INIT(void)
+{
+	assert(sem_init(&semaphore, 0, 1) == 0);
+}
+
+void SEMAPHORE_DOWN(void)
+{
+	assert(sem_wait(&semaphore) == 0);
+}
+
+void SEMAPHORE_UP(void)
+{
+	assert(sem_post(&semaphore) == 0);
+}
+
+/**
+ * @brief Mutex for Hashtable
+ */
+static pthread_mutex_t lock;
+
+unsigned nreaders = 0;
+
+void MUTEX_INIT(void)
+{
+	assert(pthread_mutex_init(&lock, NULL) == 0);
+}
+
+void MUTEX_LOCK(void)
+{
+	assert(pthread_mutex_lock(&lock) == 0);
+}
+
+void MUTEX_UNLOCK(void)
+{
+	assert(pthread_mutex_unlock(&lock) == 0);
+}
+
+static void reader_enter(void)
+{
+	MUTEX_LOCK();
+	nreaders++;
+	if (nreaders == 1)
+		SEMAPHORE_DOWN();
+	MUTEX_UNLOCK();
+}
+
+static void reader_leave(void)
+{
+	MUTEX_LOCK();
+	nreaders--;
+	if (nreaders == 0)
+		SEMAPHORE_UP();
+	MUTEX_UNLOCK();
+}
 
 #endif

@@ -21,10 +21,10 @@ string removingKey(string s)
     return s.erase(0, i + 1);
 }
 
-void listFromFile(int key, char operatorIn[2])
+static void *listFromFile(void *arguments)
 {
-
-    unsigned hash = HASH_FN(key);
+    struct arg_struct *args = (struct arg_struct *)arguments;
+    unsigned hash = HASH_FN(args->com.commandRecord.key);
     std::string line;
     std::ifstream indata;
 
@@ -38,22 +38,22 @@ void listFromFile(int key, char operatorIn[2])
 
     while (getline(indata, line))
     {
-        if (!strcmp(operatorIn, operators[0]) && stoi(line.c_str()) > hash)
+        if (!strcmp(args->com.commandOperator, operators[0]) && stoi(line.c_str()) > hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[1]) && stoi(line.c_str()) < hash)
+        if (!strcmp(args->com.commandOperator, operators[1]) && stoi(line.c_str()) < hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[2]) && stoi(line.c_str()) >= hash)
+        if (!strcmp(args->com.commandOperator, operators[2]) && stoi(line.c_str()) >= hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
         }
-        if (!strcmp(operatorIn, operators[3]) && stoi(line.c_str()) <= hash)
+        if (!strcmp(args->com.commandOperator, operators[3]) && stoi(line.c_str()) <= hash)
         {
             records[listIdx++] = removingKey(line.c_str());
             found = true;
@@ -73,13 +73,6 @@ void listFromFile(int key, char operatorIn[2])
     {
         printf("No data found. \n");
     }
-
-    
-    string messageStr = "Listing keys: ";
-    messageStr.append(operatorIn);
-    char message[100];
-    strcpy(message, messageStr.c_str());
-    writeToLogNumberOfRecords(message, hash);
 }
 
 #endif

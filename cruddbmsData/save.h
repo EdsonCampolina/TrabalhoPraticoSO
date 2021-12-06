@@ -25,10 +25,6 @@ void writeToDataFile(int numberOfRecords)
     outdata << numberOfRecords;
     outdata.close();
 
-    char message[] = "Updating record number: ";
-
-    writeToLogNumberOfRecords(message, numberOfRecords);
-
 }
 
 #endif

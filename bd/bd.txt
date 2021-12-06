@@ -1,9 +1,0 @@
-1,1,foobar 
-2,2,foobar 
-3,10,foobar 
-4,4,foobar 
-5,5,foobar 
-6,6,foobar 
-7,7,foobar 
-8,8,foobar 
-9,123,abcde 

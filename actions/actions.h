@@ -8,15 +8,18 @@
 #include "./searchFromFile.h"
 #include "./writeToFile.h"
 #include "./removeFromFile.h"
-#include "./updateFile.h"
 #include "./listFromFile.h"
 
 #include "../structs/internalCommand.h"
 #include "../cruddbmsData/read.h"
 #include "../cruddbmsData/save.h"
+#include <assert.h>
 
 void executeCommand(internalCommand com)
 {
+    pthread_t workers[2];
+    struct arg_struct args;
+    args.com = com;
 
     // insert
 
@@ -24,11 +27,29 @@ void executeCommand(internalCommand com)
     {
         if (com.commandRecord.dataOk)
         {
+            SEMAPHORE_DOWN();
+
             unsigned numberOfRecords = readFromDataFile();
             numberOfRecords++;
             com.commandRecord.key = numberOfRecords;
-            writeToFile(com.commandRecord);
             writeToDataFile(numberOfRecords);
+            args.com = com;
+
+            // Thread sobre o banco
+
+            assert(pthread_create(&workers[1], NULL,
+                                  writeToFile, (void *)&args) == 0);
+
+            // Thread do log
+
+            args.message = "Inserting key: ";
+            assert(pthread_create(&workers[0], NULL,
+                                  writeToLog, (void *)&args) == 0);
+
+            assert(pthread_join(workers[0], NULL) == 0);
+            assert(pthread_join(workers[1], NULL) == 0);
+
+            SEMAPHORE_UP();
         }
     }
 
@@ -37,7 +58,25 @@ void executeCommand(internalCommand com)
     if (com.commandOk && !strcmp(com.commandName, commandsTypes[1]))
     {
         if (com.commandRecord.dataOk)
-            searchFomFile(com.commandRecord.key);
+        {
+            reader_enter();
+
+            // Thread sobre o banco
+
+            assert(pthread_create(&workers[1], NULL,
+                                  searchFomFile, (void *)&args) == 0);
+
+            // Thread do log
+
+            args.message = "Reading key: ";
+            assert(pthread_create(&workers[0], NULL,
+                                  writeToLog, (void *)&args) == 0);
+
+            assert(pthread_join(workers[0], NULL) == 0);
+            assert(pthread_join(workers[1], NULL) == 0);
+
+            reader_leave();
+        }
     }
 
     // remove
@@ -45,7 +84,25 @@ void executeCommand(internalCommand com)
     if (com.commandOk && !strcmp(com.commandName, commandsTypes[2]))
     {
         if (com.commandRecord.dataOk)
-            removeFromFile(com.commandRecord.key);
+        {
+            SEMAPHORE_DOWN();
+
+            // Thread sobre o banco
+
+            assert(pthread_create(&workers[1], NULL,
+                                  removeFromFile, (void *)&args) == 0);
+
+            // Thread do log
+
+            args.message = "Removing key: ";
+            assert(pthread_create(&workers[0], NULL,
+                                  writeToLog, (void *)&args) == 0);
+
+            assert(pthread_join(workers[0], NULL) == 0);
+            assert(pthread_join(workers[1], NULL) == 0);
+
+            SEMAPHORE_UP();
+        }
     }
 
     // update
@@ -53,7 +110,26 @@ void executeCommand(internalCommand com)
     if (com.commandOk && !strcmp(com.commandName, commandsTypes[3]))
     {
         if (com.commandRecord.dataOk)
-            updateFile(com.commandRecord);
+        {
+            SEMAPHORE_DOWN();
+
+            // Thread sobre o banco
+
+            assert(pthread_create(&workers[1], NULL,
+                                  writeToFile, (void *)&args) == 0);
+
+            // Thread do log
+
+            args.message = "Updating key: ";
+
+            assert(pthread_create(&workers[0], NULL,
+                                  writeToLog, (void *)&args) == 0);
+
+            assert(pthread_join(workers[0], NULL) == 0);
+            assert(pthread_join(workers[1], NULL) == 0);
+
+            SEMAPHORE_UP();
+        }
     }
 
     // list
@@ -61,7 +137,27 @@ void executeCommand(internalCommand com)
     {
         printf("%s \n", commandsRes[4]);
         if (com.commandRecord.dataOk)
-            listFromFile(com.commandRecord.key, com.commandOperator);
+        {
+            reader_enter();
+
+            // Thread sobre o banco
+
+            assert(pthread_create(&workers[1], NULL,
+                                  listFromFile, (void *)&args) == 0);
+
+            // Thread do log
+
+            args.message = "Listing keys: ";
+            args.message.append(com.commandOperator);
+
+            assert(pthread_create(&workers[0], NULL,
+                                  writeToLog, (void *)&args) == 0);
+
+            assert(pthread_join(workers[0], NULL) == 0);
+            assert(pthread_join(workers[1], NULL) == 0);
+
+            reader_leave();
+        }
     }
 
     // unknown command
