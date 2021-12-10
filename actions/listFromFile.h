@@ -21,6 +21,27 @@ string removingKey(string s)
     return s.erase(0, i + 1);
 }
 
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for retrieving the data present in the file 
+   and loading them into a Hash Table. Then, it filters and prints 
+   the list of records ordered by an operator informed by the user on the screen.
+------------------------------------------------
+# Parameters
+## *arguments
+### Type: pointer
+### Desc: Pointer to the struct containing the command and arguments entered by the user.
+------------------------------------------------
+# Return
+## Type: None
+### Var: None
+### Desc: nothing is retured.
+
+------------------------------------------------
+*/
+
 static void *listFromFile(void *arguments)
 {
     struct arg_struct *args = (struct arg_struct *)arguments;

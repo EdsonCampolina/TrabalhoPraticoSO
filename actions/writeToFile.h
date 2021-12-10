@@ -13,6 +13,29 @@ using std::cerr;
 using std::endl;
 using std::ofstream;
 
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for retrieving data from the file and loading 
+   it into a hash table. Then, it inserts the data entered by the user 
+   in the table into the table. At the end of the operation, a temporary 
+   file is saved with the changes made, the previous file is removed and 
+   the temporary file is renamed, becoming the main file.
+------------------------------------------------
+# Parameters
+## *arguments
+### Type: pointer
+### Desc: Pointer to the struct containing the command and arguments entered by the user.
+------------------------------------------------
+# Return
+## Type: None
+### Var: None
+### Desc: nothing is retured.
+
+------------------------------------------------
+*/
+
 static void *writeToFile(void *arguments)
 {
     struct arg_struct *args = (struct arg_struct *)arguments;
