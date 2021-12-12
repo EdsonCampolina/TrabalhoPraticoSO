@@ -7,6 +7,27 @@
 #include "../structs/record.h"
 #include "../utils/utils.h"
 
+
+/*
+------------------------------------------------
+# Description
+## The method is responsible for separating each part of the 
+   command from the string informed by the user before performing 
+   any action with the informed arguments.
+------------------------------------------------
+# Parameters
+## entrada
+### Type: char vector
+### Desc: input value entered by the user.
+------------------------------------------------
+# Return
+## Type: record
+### Var: r
+### Desc: int of the key entered by the user.
+
+------------------------------------------------
+*/
+
 record translateListArgs(char entrada[SIZECHARINPUT])
 {
     char inputKey[SIZECHARINPUT], value[SIZECHARINPUT];

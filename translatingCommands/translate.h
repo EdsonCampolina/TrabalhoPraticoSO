@@ -14,6 +14,31 @@
 #include "../structs/commandType.h"
 #include "../utils/utils.h"
 
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for receiving an input via the terminal and verifying 
+   if the command informed is valid. Once a valid command is detected, the 
+   arguments are formatted into a struct for further processing.
+
+------------------------------------------------
+# Parameters
+## input[SIZECHARINPUT]
+### Type: char
+### Desc: Input parameter 1 that must have a string entered by the user.
+
+------------------------------------------------
+# Return
+## Type: internalCommand
+### Var: com
+### Desc: This structure is composed of the command name, data, a bool to 
+    enable or not the command to run, operator field (such as >, <,> =, <=) and
+    a 'record' structure to aid in sorting of the data, containing the sort key, and so on.
+
+------------------------------------------------
+*/
+
 internalCommand translateCommand(char input[SIZECHARINPUT])
 {
 

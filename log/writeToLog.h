@@ -17,6 +17,26 @@ struct arg_struct
     internalCommand com;
 };
 
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for saving the commands executed in the database 
+   in a log file, as well as a message referring to that command.
+------------------------------------------------
+# Parameters
+## *arguments
+### Type: pointer
+### Desc: Pointer to the struct containing the command and arguments entered by the user.
+------------------------------------------------
+# Return
+## Type: NULL
+### Var: None
+### Desc: NULL is retured.
+
+------------------------------------------------
+*/
+
 static void *writeToLog(void *arguments)
 {
     struct arg_struct *args = (struct arg_struct *)arguments;

@@ -13,6 +13,30 @@ using std::cerr;
 using std::endl;
 using std::ifstream;
 
+
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for retrieving data from the file and loading 
+   them into a Hash Table. Then, it searches the table for the key that 
+   was informed by the user and removes the data from the table. At the end 
+   of the operation, a temporary file is written with the changes made, the 
+   previous file is removed and the temporary file is renamed, becoming the main file.
+------------------------------------------------
+# Parameters
+## *arguments
+### Type: pointer
+### Desc: Pointer to the struct containing the command and arguments entered by the user.
+------------------------------------------------
+# Return
+## Type: None
+### Var: None
+### Desc: nothing is retured.
+
+------------------------------------------------
+*/
+
 static void *removeFromFile(void *arguments)
 {
     struct arg_struct *args = (struct arg_struct *)arguments;

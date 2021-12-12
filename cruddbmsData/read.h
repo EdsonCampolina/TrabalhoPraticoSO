@@ -12,6 +12,26 @@ using std::cerr;
 using std::endl;
 using std::ifstream;
 
+/*
+------------------------------------------------
+# Description
+## Method responsible for returning the last key assigned to a record, 
+   so that the next record receives as a key an integer following the 
+   one returned by the function.
+------------------------------------------------
+# Parameters
+## None
+### Type: None
+### Desc: no parameters need to be passed.
+------------------------------------------------
+# Return
+## Type: int
+### Var: num
+### Desc: the key assigned to the last record stored in the database.
+
+------------------------------------------------
+*/
+
 int readFromDataFile()
 {
     ifstream indata;

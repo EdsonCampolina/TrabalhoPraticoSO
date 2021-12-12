@@ -15,6 +15,31 @@
 #include "../cruddbmsData/save.h"
 #include <assert.h>
 
+
+/*
+------------------------------------------------
+# Description
+## Method responsible for receiving a command informed by the user 
+   that is already formatted in the struct of type internalCommand 
+   to be processed. The method will create two threads for each call 
+   of that command, one to execute the action in the database and the 
+   other to write the log file with the executed action. In addition, 
+   the method protects the critical region to avoid inconsistencies.
+------------------------------------------------
+# Parameters
+## com
+### Type: internalCommand
+### Desc: Struct with the user-entered command formatted for processing.
+
+------------------------------------------------
+# Return
+## Type: None
+### Var: None
+### Desc: nothing is retured.
+
+------------------------------------------------
+*/
+
 void executeCommand(internalCommand com)
 {
     pthread_t workers[2];
