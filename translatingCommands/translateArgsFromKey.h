@@ -7,6 +7,27 @@
 #include "../structs/record.h"
 #include "../utils/utils.h"
 
+
+/*
+------------------------------------------------
+# Description
+## method responsible for converting the key informed by the user to int,
+   where it is received as a char vector.
+------------------------------------------------
+# Parameters
+## entrada
+### Type: char
+### Desc: input value entered by the user.
+------------------------------------------------
+# Return
+## Type: record
+### Var: r
+### Desc: int of the key entered by the user.
+
+------------------------------------------------
+*/
+
+
 record translateArgsFromKey(char entrada[SIZECHARINPUT])
 {
     record r;

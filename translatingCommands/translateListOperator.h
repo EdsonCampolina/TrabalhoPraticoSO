@@ -7,6 +7,26 @@
 #include "../structs/record.h"
 #include "../utils/utils.h"
 
+
+/*
+------------------------------------------------
+# Description
+## This method is responsible for separating the operators from the
+   complete command that was previously provided by the user.
+------------------------------------------------
+# Parameters
+## entrada, operador
+### Type: char and char pointer
+### Desc: input value entered by the user.
+------------------------------------------------
+# Return
+## Type: None
+### Var: None
+### Desc: nothing is returned.
+
+------------------------------------------------
+*/
+
 void translateListOperator(char entrada[SIZECHARINPUT], char* operador)
 {
     // char* operador = malloc(2);
