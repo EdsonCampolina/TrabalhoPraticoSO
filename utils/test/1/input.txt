@@ -1,0 +1,31 @@
+./simpledb --insert=123,foobar
+./simpledb --insert=211,foobar
+./simpledb --insert=799,foobar
+./simpledb --insert=488,foobar
+./simpledb --insert=177,foobar
+./simpledb --insert=166,foobar
+./simpledb --insert=155,foobar
+./simpledb --insert=144,foobar
+./simpledb --insert=999,foobar
+./simpledb --insert=133,foobar
+./simpledb --insert=122,foobar
+./simpledb --insert=888,foobar
+./simpledb --insert=777,foobar
+./simpledb --insert=666,foobar
+./simpledb --insert=111,foobar
+./simpledb --insert=222,foobar
+./simpledb --insert=333,foobar
+./simpledb --insert=444,foobar
+./simpledb --insert=555,foobar
+./simpledb --update=1,525,testa
+./simpledb --update=5,400,teste
+./simpledb --update=6,500,testi
+./simpledb --update=9,600,testo
+./simpledb --update=12,700,testu
+./simpledb --remove=14
+./simpledb --remove=12
+./simpledb --remove=9
+./simpledb --remove=5
+./simpledb --remove=2
+
+
